@@ -46,14 +46,14 @@ public class GeneralMethods {
             Calendar overLayCalendar = SharedPrefManager.getInstance().doStuff(context).getOverlayCalendar();
             if(Build.VERSION.SDK_INT < 23){
                 if(Build.VERSION.SDK_INT >= 19){
-                    alarmManager.setExact(AlarmManager.RTC_WAKEUP,overLayCalendar.getTimeInMillis(),pendingIntent);
+                    alarmManager.setExact(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTimeInMillis()+1000,pendingIntent);
                 }
                 else{
-                    alarmManager.set(AlarmManager.RTC_WAKEUP,overLayCalendar.getTimeInMillis(),pendingIntent);
+                    alarmManager.set(AlarmManager.RTC_WAKEUP,/*overLayCalendar.getTimeInMillis()*/Calendar.getInstance().getTimeInMillis()+1000,pendingIntent);
                 }
             }
             else{
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,overLayCalendar.getTimeInMillis(),pendingIntent);
+                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTimeInMillis()+1000,pendingIntent);
             }
         }
     }

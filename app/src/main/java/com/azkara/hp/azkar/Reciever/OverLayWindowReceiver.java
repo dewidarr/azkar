@@ -18,7 +18,8 @@ public class OverLayWindowReceiver extends BroadcastReceiver {
         Log.e("receiver", "received");
         int repeatTime = SharedPrefManager.getInstance().doStuff(context).getAlarmManagerRepeatTime();
         Calendar overLayCalendar = SharedPrefManager.getInstance().doStuff(context).getOverlayCalendar();
-        overLayCalendar.add(Calendar.HOUR, repeatTime);
+//        overLayCalendar.add(Calendar.MINUTE, repeatTime);
+        Calendar.getInstance().add(Calendar.MINUTE, repeatTime);
         SharedPrefManager.getInstance().doStuff(context).setOverLayCalendar(overLayCalendar);
         GeneralMethods.initOverLayZekrAlarm(context);
         Intent startServiceIntent = new Intent(context, FloatingWidgetService.class);
